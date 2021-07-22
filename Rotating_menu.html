@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://kit.fontawesome.com/2d37f2dec9.js"></script>
+    <title>Test</title>
+    <style>
+        #container{
+            background: teal;
+            height: 600px;
+            width: 600px;
+            position: fixed;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 4px 10px 10px rgba(46, 43, 43, 0.473);
+        }
+        .list{
+            text-transform: uppercase;
+            font-weight: bold;
+            text-align: center;
+            width: 160px;
+            height: 500px;
+            background-image: url('cover.jpg');
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            transition: .5s;
+            box-shadow: 3px 3px 6px 6px rgba(0, 0, 0, 0.39);
+            border-radius: 10px;
+        }
+        .list:hover{
+            box-shadow: 5px 5px 6px 6px rgba(3, 24, 70, 0.79);
+        }
+        #list1{
+            background: rgba(6, 134, 6, .98);
+            transform: translate(-50%, -50%) rotate(-25deg);
+            transform-origin: 30px 480px;
+        }
+         #list2{
+            background: rgba(172, 43, 43, 0.98);
+            transform: translate(-50%, -50%) rotate(-20deg);
+            transform-origin: 30px 480px ;
+        }
+        
+        #list3{
+            background: rgba(243, 243, 13, 0.98);
+            transform: translate(-50%, -50%) rotate(-15deg);
+            transform-origin: 30px 480px ;
+        }
+        #list4{
+            background: rgba(164, 243, 44, 0.98);
+            transform: translate(-50%, -50%) rotate(-10deg);
+            transform-origin: 30px 480px ;
+        }
+        #list5{
+            background: rgba(6, 245, 245, 0.98);
+            transform: translate(-50%, -50%) rotate(-5deg);
+            transform-origin: 30px 480px ;
+        }
+        #list6{
+            background: rgba(67, 104, 216, 0.98);
+            transform: translate(-50%, -50%) rotate(0deg);
+            transform-origin: 30px 480px ;
+        }
+        #list7{
+            background: rgba(128, 125, 125, 0.98);
+            transform: translate(-50%, -50%) rotate(5deg);
+            transform-origin: 30px 480px ;
+        }
+        #list8{
+            background: rgba(7, 7, 243, 0.98);
+            transform: translate(-50%, -50%) rotate(10deg);
+            transform-origin: 30px 480px ;
+        }
+        #list9{
+            background: rgba(132, 43, 214, 0.98);
+            transform: translate(-50%, -50%) rotate(15deg);
+            transform-origin: 30px 480px ;
+        }
+        #list10{
+            background: rgba(226, 205, 165, 0.98);
+            transform: translate(-50%, -50%) rotate(20deg);
+            transform-origin: 30px 480px ;
+        }
+        #list11{
+            background: rgba(87, 41, 133, 0.98);
+            transform: translate(-50%, -50%) rotate(25deg);
+            transform-origin: 30px 480px ;
+            /* z-index: 1; */
+        }
+        #list12{
+            /* background: lawngreen; */
+            transform: translate(-50%, -50%) rotate(30deg);
+            transform-origin: 30px 480px;
+        }
+
+        .list h1{
+            font-size: 1.5em;
+            margin-top: 70px;
+            white-space: nowrap;
+            font-family: comic sans ms;
+            border-top: dashed 4px black;
+            border-bottom: dashed 4px black;
+            box-shadow: 0 0 1px 1px rgba(225,225,225,.3);
+
+        }
+
+        #list12 h3{
+            margin-top: 7px;
+            font-size: 1.5em;
+            font-family: comic sans ms;
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+        }
+
+        #list12 h3::after{
+            content: "";
+            position: absolute;
+            top: 9.4px;
+            left: 5px;
+            border-radius: 5px;
+            box-shadow: 0 0 1px 1px rgba(255,255,255,.2);
+            background: rgba(0, 0, 0, 0.241);
+            height: 30px;
+            width: 150px;
+        }
+        #list12 h2{
+            font-family: georgia;
+            margin-top: 350px;
+            margin-left: 100px;
+            transform: rotate(-90deg);
+            line-height: 50px;
+            font-size: 2.39em;
+            text-align: left;
+            white-space: nowrap;
+        }
+        #list12::before{
+            content: "";
+            position: absolute;
+            top:460px;
+            left: 12px;
+            height: 20px;
+            width: 20px;
+            box-shadow: 2px 2px 4px 4px rgba(0, 0, 0, 0.401);
+            border-radius: 10px;
+            background-image: linear-gradient(rgb(0, 0, 0), rgb(128, 128, 128));
+            z-index: 1;
+        }
+        i{
+            margin-top: 25px;
+            color: rgba(0, 0, 0, 0.778);
+            font-size: 5em;
+            /* background: red; */
+        }
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="list" id="list1" onclick="Animate_away(this)"> 
+            <i class="fas fa-cog"></i>
+            <h1><span>settings</span></h1>
+        </div>
+        <div class="list" id="list2" onclick="Animate_away(this)"> 
+            <i class="fas fa-tools"></i>
+            <h1><span>toolbar</span></h1>
+        </div>
+        <div class="list" id="list3" onclick="Animate_away(this)"> 
+            <i class="fas fa-ad"></i>
+            <h1><span>website</span></h1>
+        </div>
+        <div class="list" id="list4" onclick="Animate_away(this)"> 
+            <i class="fab fa-chrome"></i>
+            <h1><span>browse</span></h1>
+        </div>
+        <div class="list" id="list5" onclick="Animate_away(this)"> 
+            <i class="fas fa-address-card"></i>
+            <h1><span>contacts</span></h1>
+        </div>
+        <div class="list" id="list6" onclick="Animate_away(this)"> 
+            <i class="fas fa-closed-captioning"></i>
+            <h1><span>photoshop</span></h1>
+        </div>
+        <div class="list" id="list7" onclick="Animate_away(this)"> 
+            <i class="fas fa-video"></i>
+            <h1><span>videos</span></h1>
+        </div>
+        <div class="list" id="list8" onclick="Animate_away(this)"> 
+            <i class="fas fa-link"></i>
+            <h1><span>link</span></h1>
+        </div>
+        <div class="list" id="list9" onclick="Animate_away(this)"> 
+                <i class="fas fa-mobile-alt"></i>
+            <h1><span>phone</span></h1>
+        </div>
+        <div class="list" id="list10" onclick="Animate_away(this)">
+            <i class="fab fa-linkedin"></i>
+            <h1><span>Linkedin</span></h1>
+        </div>
+        <div class="list" id="list11" onclick="Animate_away(this)">
+            <i class="fas fa-home"></i>
+            <h1><span>Home</span></h1>
+        </div>
+        <div class="list" id="list12" onclick="Animate_away(this)">
+            <h3><span>Profile</span></h3>
+            <h2>King &hearts; Deep</h1>
+        </div>
+    </div>
+
+    <script>
+        var cheat = ''
+        var check = 'vanish'
+        var i = 0, flag = 0
+        // document.addEventListener('keydown', e=>{
+        //     cheat = cheat + e.key
+        //     let x = e.key
+
+        //     if(flag){
+        //         var e = document.getElementById('container')
+        //         var list = document.getElementsByClassName('list')
+        //         var pos = 0
+        //         var id = setInterval(frame, 5)
+        //         fucntion frame(){
+        //             if(pos == 350){
+        //                 clearInterval(id)
+        //             }else{
+        //                 elem.style.top = pos+'px';
+        //                 ele.style.left = pos+'px';
+        //             }
+        //         }   
+        //     }
+
+
+        //     if(x == check[i]){
+        //         i++;
+        //         if(i >= 6){
+        //             flag = 1
+        //         }
+        //     }
+        //     else{
+        //         i=0;
+        //     }
+
+        // })
+
+        function Animate_away(object){
+            var str = 'list'
+            var rangle = 40
+            var property = 'translate(-50%, -50%) '+'rotate('
+            var currentid = object.attributes.id.nodeValue
+            var langle = -5*parseInt(currentid.substring(4, currentid.length))
+            for(let i=1; i<=12; i++){
+
+                // console.log(temp+ '   this is the angle ' + angle+ ' this is id ' +obj)
+                let obj = str+i
+                if(currentid == obj){
+                    let angle = 0  
+                    let temp = property+angle+'deg)'
+                    document.getElementById(obj).style.transform = temp
+                    // console.log('equal= '  + angle+ '       obj = '+obj + '     current_id = '+ currentid)
+                }
+                else if(parseInt(currentid.substring(4, currentid.length)) > parseInt(obj.substring(4, obj.length))){
+                    langle = langle + 5
+                    let temp = property+langle+'deg)'
+                    document.getElementById(obj).style.transform = temp
+                    // console.log('lesss = '  + langle+ '     obj = '+obj + '     current_id = ' +currentid)
+                }
+                else{
+                    rangle = rangle + 5
+                    let temp = property+rangle+'deg)'
+                    document.getElementById(obj).style.transform = temp
+                    // console.log('great = '  + rangle+ '     obj = '+obj + '     current_id = '+ currentid)
+                }
+            }
+            
+        }
+        
+    </script>
+</body>
+</html>

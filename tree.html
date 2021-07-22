@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tree</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+        .container{
+            overflow: hidden;
+        }
+        .canvas{
+            /* background: black; */
+            overflow: hidden;
+            margin-left: 50%;
+            color: white;
+            transform: translateX(-50%);
+            transition: .5s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <canvas class="canvas"></canvas>
+    </div>
+</body>
+
+<script>
+    var canvas = document.getElementsByClassName('canvas')[0]
+    var ctx = canvas.getContext('2d')
+    canvas.height = window.innerHeight- 20
+    canvas.width = window.innerWidth - 20
+    var x = canvas.width/2
+    var y = canvas.height-100
+    var  color = ["#001f3f", "#0074D9", "#7FDBFF", "#39CCCC", "#3D9970", "#2ECC40", "#01FF70", "#FFDC00", "#FF851B", "#FF4136", "#85144b", "#F012BE", "#B10DC9", "#AAAAAA", "#DDDDDD"]
+    function random(){return parseInt(Math.random()*(color.length-1))}
+    color = "rgb(117, 29, 17)"
+    clr1 = color[random()]
+    var width = 40;
+    var owidth = 40;
+    var height = 6;
+    var  size = 170;
+    var angle = 0;
+    var posX = 0;
+    var posY = 0;
+
+    function drawTree(x, y, width, height, size, angle, clr){
+        ctx.beginPath()
+        ctx.save()
+        ctx.translate(x, y)
+        ctx.rotate(angle*Math.PI/180)
+        ctx.moveTo(0, 0)
+        if(Math.abs(x - posX) < 10 && Math.abs(y- posY) < 10){
+            // console.log(angle)
+            angle = 1 + angle
+        }
+        ctx.shadowBlur = 20
+        ctx.shadowColor = "black"
+        ctx.lineTo(0, -size);
+        ctx.lineWidth = width
+        ctx.strokeStyle = clr
+        ctx.stroke()
+        if(width < .7*.7*.7*owidth){
+            clr = "green"
+        }else{
+            clr = color
+        }
+        if(size < height){
+            ctx.restore()
+            return;
+        }
+        drawTree(0, -size, width*.7, height, size*0.75, angle+20, clr)
+        drawTree(0, -size, width*.7, height, size*0.75, angle-20, clr)
+        ctx.restore()
+    }
+    drawTree(x, y, width, height, size, angle, color)
+    // function animateWindow(){
+    //     window.requestAnimationFrame(animateWindow)
+    //     ctx.clearRect(0,0, canvas.height, canvas.width)
+    //     drawTree(x, y, width, height, size, angle, clr)
+    // }
+    // animateWindow()
+    // document.addEventListener('mousemove', function(event){
+    //     posX = event.screenX
+    //     posY = event.screenY
+    // })
+
+
+</script>
+</html>

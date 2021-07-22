@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ballanimation</title>
+    
+    <style>
+        #canvas{
+            color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <canvas id='canvas'></canvas>
+    
+    <script>
+        c = document.getElementById('canvas')
+        ctx = c.getContext('2d')
+        c.height = (window.innerHeight-20)
+        c.width = (window.innerWidth-20)
+        
+        var posX = 0
+        var posY = 0
+        var max_r_hover = 50
+        var max_radius = 6
+        var min_radius = 1
+        var max_velocity = 4
+        var min_velocity = -4
+        var no_balls = 900
+        var color_list = [
+            '#A854FF',
+            '#6F4DE8',
+            '#4D7DE8', 
+            '#E83E38',
+            '#E87238',
+            '#FFF182',
+            '#5DFDFF',
+            '#B5A3FF'
+        ]
+    
+ 
+        function Ball(x, y, r, vx, vy){
+            this.x = x
+            this.y = y
+            this.or = r
+            this.r = r
+            this.vx = vx
+            this.color = color_list[Math.floor(Math.random()*(+color_list.length - 0)) + 0]
+            this.vy = vy
+            // console.log('this function')
+            
+            this.draw = function(){
+                // console.log(this.x, " ", this.y)
+                // ctx.clearRect(0, 0, canvas.width, canvas.height)                
+                ctx.beginPath()
+                ctx.arc(this.x, this.y, this.r, 0, 2*Math.PI, false)
+                ctx.strokeStyle = this.color
+                ctx.fillStyle = this.color
+                ctx.fill()
+                ctx.stroke()
+            }
+
+            this.update = function(){
+                // ctx.clearRect(0, 0, canvas.width, canvas.height)
+                this.draw()
+                // ctx.fillRect(this.x-50, this.y-50, 50, 50)
+                if(this.x >= (window.innerWidth-10)-this.r || this.x <= this.r){
+                    this.vx = -this.vx
+                }
+                if(this.y > (window.innerHeight-10)-this.r || this.y < this.r){
+                    this.vy = -this.vy
+                }
+                // console.log(this.x, ' this ', this.y)
+                // console.log(posX, " pos ", posY)
+                let temp1 = posX - this.x
+                let temp2 = posY - this.y 
+                if((temp1>-50 && temp1<=50) && (temp2>-50 && temp2<=50)){
+                    if(this.r < max_r_hover){
+                        this.r = 3+ this.r  
+                    }
+                    // else{ this.r = this.r +1 }
+                }
+                else{
+                    if(this.r > this.or ){
+                        this.r = this.r-3}
+                }
+                this.x = this.x + this.vx
+                this.y = this.y + this.vy
+                // console.log('vx '+ vx)
+            }
+        }
+
+        var ball = []
+        for(let i=0; i<no_balls; i++){
+            let wx = Math.floor(Math.random()*(+(window.innerWidth-20) - +max_radius)) + +max_radius+1
+            let hy = Math.floor(Math.random()*(+(window.innerHeight-20) - +max_radius+1)) + +min_radius
+            let rr = Math.floor(Math.random()*(+max_radius - +min_radius)) + +min_radius
+            let tvx = Math.floor(Math.random()*(+max_velocity - +min_velocity)) + +min_velocity
+            let tvy = Math.floor(Math.random()*(+max_velocity - +min_velocity)) + +min_velocity
+            if(tvx == 0){
+                Math.floor(Math.random()*(+max_velocity - +min_velocity)) + +min_velocity
+            }if(tvy == 0){
+                Math.floor(Math.random()*(+max_velocity - +min_velocity)) + +min_velocity
+            }
+            ball[i] = new Ball(wx,hy,rr,tvx,tvy)
+            // ball[i] = new Ball(Math.floor(Math.random()*(+(window.innerWidth-20) - +max_radius)) + +max_radius+1, Math.floor(Math.random()*(+(window.innerHeight-20) - +max_radius+1)) + +min_radius, Math.floor(Math.random()*(+max_radius - +min_radius)) + +min_radius,Math.floor(Math.random()*(+max_velocity - +min_velocity)) + +min_velocity,Math.floor(Math.random()*(+max_velocity - +min_velocity)) + +min_velocity)
+            // console.log(Math.random()*(innerHeight-10), " ", Math.random()*(innerWidth-10))
+            // ball[i].draw()
+        }
+
+        function animate_ball(){
+            window.requestAnimationFrame(animate_ball)
+            ctx.clearRect(0, 0, canvas.width, canvas.height)
+            for(let i=0; i<no_balls; i++){
+                ball[i].update()
+            }
+            
+        }
+        
+        document.addEventListener('mousemove', function(event){
+            posX = event.screenX
+            posY = event.screenY -90
+            // console.log(posX, '  pos  ', posY)
+        })
+        function reportWindow(){
+            c.height = window.innerHeight
+            c.width = window.innerWidth
+            // console.log('yes')
+        }
+        window.onresize = reportWindow
+        animate_ball()
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+
+
+        .intro_content{
+            width: 100%;
+            text-align: center;
+
+        }
+
+        .intro{
+            /* text-align: center; */
+            color: navy;
+            font-size: 32pt;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            position: relative;
+            text-transform: uppercase;
+            display: inline-block;
+        }
+        .intro::before, .intro::after{
+            content: "";
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ff6622;
+        }
+
+        .intro::before{
+            width: 100vw;
+            z-index: -2;
+            background: navy;
+        }
+        .intro::after{
+            top: 0;
+            width: 103%;
+            background: #fff;
+            z-index: -1;
+        }
+/* ///////////////////////////////////////////// */
+
+        .list{
+            margin: auto;
+            margin-top: 100px;
+            text-align: center;
+            margin-bottom: 100px;
+            /* background: red; */
+        }
+        ul{
+            list-style: none;
+            background: none;
+        }
+
+        li{
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            text-transform: uppercase;
+            /* margin-left: 30px; */
+            font-size: 16pt;
+            background: none;
+            font-weight: bold;
+            display: inline-block;
+        }
+        li a{
+            padding-left: 15px;
+            padding-right: 15px;
+            position: relative;
+            display: block;
+            text-decoration: none;
+            color: black;
+        }
+
+        li a::before{
+            content: "";
+            position: absolute;
+            left: 0;
+            height: 20px;
+            width: 100%;
+            border-top: 2px solid black;
+            border-bottom: 2px solid black;
+            z-index: -1;
+            display: block;
+            transition: 0.5s;
+            transform: scaleY(1.5);
+            opacity: 0;
+        }
+        li a:hover::before{
+            transform: scaleY(1);
+            opacity: 1;
+        }
+        li a::after{
+            content: "";
+            margin-top: 4px;  
+            width: 100%;
+            height: 16px;
+            position: absolute;
+            left: 0;
+            z-index: -2;
+            background: black;
+            transition: 0.5s;
+            transform: scale(0, 0);
+            opacity:0
+        }
+        li a:hover::after{
+            transform: scale(1, 1);
+            opacity: 1;
+
+
+        }
+        li a:hover{
+            color:white;
+        }
+/*/////////////////////////////////////////////////////////////////////////*/
+
+/*//////////////////////////////////////////////////////////////////////*/
+img{
+    /* display:none; */
+    margin-left: 60px;
+    margin-top: 30px;
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+    transform: translateX(-50px);
+    opacity: 0;
+    transition: .5s;
+}
+
+.container{
+    width: 100%;
+    height: calc(230*3px);
+    background-image: url('Thumbnail/mainfood.jpg');
+    opacity: .9;
+    transition: .5;
+    color: white;
+}
+.thumb:nth-child(1):hover img{
+    transform: translateX(0px);
+    opacity: 1;
+}
+.thumb:nth-child(2):hover img{
+    transform: translateX(0px);
+    opacity: 1;
+}
+.thumb:nth-child(3):hover img{
+    transform: translateX(0px);
+    opacity: 1;
+}
+.thumb:nth-child(4):hover img{
+    transform: translateX(0px);
+    opacity: 1;
+}
+.thumb:nth-child(5):hover img{
+    transform: translateX(0px);
+    opacity: 1;
+}
+.thumb:nth-child(6):hover img{
+    transform: translateX(0px);
+    opacity: 1;
+}
+.thumb:nth-child(7):hover img{
+    transform: translateX(0px);
+    opacity: 1;
+}
+.thumb:nth-child(8):hover img{
+    transform: translateX(0px);
+    opacity: 1;
+}
+.thumb:nth-child(9):hover img{
+    transform: translateX(0px);
+    opacity: 1;
+}
+.thumb:nth-child(10):hover img{
+    transform: translateX(0px);
+    opacity: 1;
+}
+.thumb:nth-child(11):hover img{
+    transform: translateX(0px);
+    opacity: 1;
+}
+.thumb:nth-child(12):hover img{
+    transform: translateX(0px);
+    opacity: 1;
+}
+.thumb{
+    height: 230px;
+    width: 25%;
+    position: relative;
+    background: rgba(0, 0, 0, 0.314);
+    float: right;
+    white-space: nowrap;
+}
+
+.name{
+    position: relative;
+    max-width: 150px;
+    bottom: 0;
+    right: 0;
+    float:right;
+    font-size: 7pt;
+    transform: translateY(165px);
+    z-index: 2;
+    padding-right: 30px; 
+    opacity: 1;
+    transition: 0.5s;
+
+}
+
+.inner-content{
+    border: 1px wheat solid;
+    float: right;
+    height: inherit;
+    width: 100%;
+    position: absolute;
+    background: none;
+    font-size: 7pt; 
+    transition: 0.5s;
+}
+
+.inner-content:hover>.hide-content{
+    z-index: 1;
+    transform: translateY(0);
+    opacity: 1;
+}.inner-content:hover #titleblock{
+    transform: translateY(3px);
+    opacity: 1;
+}.thumb:hover .name{
+    transform: translateY(140px);
+    opacity: 0;
+}
+
+.hide-content{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 7pt;
+    float: right;
+    max-width: 200px;
+    transform: translateY(60px);
+    white-space: nowrap;
+    z-index: -1;
+    padding-right: 30px;
+    opacity: 0;
+    padding-bottom: 12px;
+    transition: 0.5s;
+}
+h2{
+    text-align: right;
+}
+#titleblock{
+    text-align: left;
+    margin-top:30px;
+    transform: translateY(40px);
+    margin-left: 40px;
+    transition: 0.5s;
+    opacity: 0;
+}
+.inner-content .title{
+    font-size: 10pt;
+}
+small{
+    font-size: 10pt;
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="intro_content">
+        <h1 class='intro'>King Deep Thumbnail Menu</h1>
+    </div>
+    <div class="list">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Menu</a></li>
+            <li><a href="#">gallery</a></li>
+            <li><a href="#">camera</a></li>
+            <li><a href="#">Settings</a></li>
+        </ul>
+    </div>
+    <div class='container'>
+        <div class="thumb thumb1">
+            <div class="name">
+                <h2 id="headName">Chickpea Curry</h2>
+            </div>
+            <div class="inner-content">
+                <div class="title">
+                    <h2 id="titleblock">Indian cuisine butter chole</h2>
+                </div>
+                <div class="thumimg">
+                    <img src="thumbnail/1.jpg">
+                </div>
+                <div class='hide-content'>
+                    <h2 id="innerName">Chickpea Curry</h2>
+                    <br>
+                    <small>
+                        "Chole chawal"
+                        <span></span>
+                    </small>
+                </div>
+            </div>
+        </div>
+
+        <div class="thumb thumb2">
+            <div class="name">
+                <h2 id="headName">Tandoori Chicken</h2>
+            </div>
+            <div class="inner-content">
+                <div class="title">
+                    <h2 id="titleblock"> Indian cuisine tandoori chicken</h2>
+                </div>
+                <div class="thumimg">
+                    <img src="thumbnail/2.jpg">
+                </div>
+                <div class='hide-content'>
+                    <h2 id="innerName">Tandoori Chicken</h2>
+                    <br>
+                    <small>
+                        "Tandoor"
+                        <span></span>
+                    </small>
+                </div>
+            </div>
+        </div>
+
+        <div class="thumb thumb3">
+            <div class="name">
+                <h2 id="headName">Chicken Tikka Masala</h2>
+            </div>
+            <div class="inner-content">
+                <div class="title">
+                    <h2 id="titleblock"> delicious grilled chicken creamy curry</h2>
+                </div>
+                <div class="thumimg">
+                    <img src="thumbnail/3.jpg">
+                </div>
+                <div class='hide-content'>
+                    <h2 id="innerName">Chicken Tikka Masala</h2>
+                    <br>
+                    <small>
+                        "grilled chicken"
+                        <span></span>
+                    </small>
+                </div>
+            </div>
+        </div>
+        
+        <div class="thumb thumb4">
+            <div class="name">
+                <h2 id="headName">Rogan Josh</h2>
+            </div>
+            <div class="inner-content">
+                <div class="title">
+                    <h2 id="titleblock"> dish from Kashmir is red lamb</h2>
+                </div>
+                <div class="thumimg">
+                    <img src="thumbnail/4.jpg">
+                </div>
+                <div class='hide-content'>
+                    <h2 id="innerName">Rogan Josh</h2>
+                    <br>
+                    <small>
+                        "Red Lamb"
+                        <span></span>
+                    </small>
+                </div>
+            </div>
+        </div>
+        
+        <div class="thumb thumb5">
+            <div class="name">
+                <h2 id="headName">Malai Kofta</h2>
+            </div>
+            <div class="inner-content">
+                <div class="title">
+                    <h2 id="titleblock">vegetable meatballs thick sauce</h2>
+                </div>
+                <div class="thumimg">
+                    <img src="thumbnail/5.jpg">
+                </div>
+                <div class='hide-content'>
+                    <h2 id="innerName">Malai Kofta</h2>
+                    <br>
+                    <small>
+                        "Meatballs"
+                        <span></span>
+                    </small>
+                </div>
+            </div>
+        </div>
+        
+        <div class="thumb thumb6">
+            <div class="name">
+                <h2 id="headName">Chickpea Curry</h2>
+            </div>
+            <div class="inner-content">
+                <div class="title">
+                    <h2 id="titleblock">north chole chickpea curry </h2>
+                </div>
+                <div class="thumimg">
+                    <img src="thumbnail/6.jpg">
+                </div>
+                <div class='hide-content'>
+                    <h2 id="innerName">Chickpea Curry</h2>
+                    <br>
+                    <small>
+                        "Chole"
+                        <span></span>
+                    </small>
+                </div>
+            </div>
+        </div>
+        <div class="thumb thumb7">
+            <div class="name">
+                <h2 id="headName">Black Lentils</h2>
+            </div>
+            <div class="inner-content">
+                <div class="title">
+                    <h2 id="titleblock">mom's lentil wholesome and delicious</h2>
+                </div>
+                <div class="thumimg">
+                    <img src="thumbnail/7.jpg">
+                </div>
+                <div class='hide-content'>
+                    <h2 id="innerName">Black Lentils</h2>
+                    <br>
+                    <small>
+                        "Kaali Daal"
+                        <span></span>
+                    </small>
+                </div>
+            </div>
+        </div>      
+        <div class="thumb thumb8">
+            <div class="name">
+                <h2 id="headName">Papdi Chaat</h2>
+            </div>
+            <div class="inner-content">
+                <div class="title">
+                    <h2 id="titleblock">North-Indian cuisine paapdi chat</h2>
+                </div>
+                <div class="thumimg">
+                    <img src="thumbnail/8.jpg">
+                </div>
+                <div class='hide-content'>
+                    <h2 id="innerName">Papdi Chaat</h2>
+                    <br>
+                    <small>
+                        "Paapri"
+                        <span></span>
+                    </small>
+                </div>
+            </div>
+        </div> 
+        <div class="thumb thumb9">
+            <div class="name">
+                <h2 id="headName">Leavened flatbread</h2>
+            </div>
+            <div class="inner-content">
+                <div class="title">
+                    <h2 id="titleblock"> Leavened Indian tandoori flatbread </h2>
+                </div>
+                <div class="thumimg">
+                    <img src="thumbnail/9.jpg">
+                </div>
+                <div class='hide-content'>
+                    <h2 id="innerName">Leavened flatbread</h2>
+                    <br>
+                    <small>
+                        "Naan"
+                        <span></span>
+                    </small>
+                </div>
+            </div>
+        </div> 
+
+        <div class="thumb thumb10">
+            <div class="name">
+                <h2 id="headName">Anda Curry</h2>
+            </div>
+            <div class="inner-content">
+                <div classEgg Curry>
+                    <h2 id="titleblock"> Indian Egg Creamy Curry</h2>
+                </div>
+                <div class="thumimg">
+                    <img src="thumbnail/10.jpg">
+                </div>
+                <div class='hide-content'>
+                    <h2 id="innerName">Anda Curry</h2>
+                    <br>
+                    <small>
+                        "Egg Curry"
+                        <span></span>
+                    </small>
+                </div>
+            </div>
+        </div>     
+ 
+        <div class="thumb thumb11">
+            <div class="name">
+                <h2 id="headName">Malai Prawn</h2>
+            </div>
+            <div class="inner-content">
+                <div class="title">
+                    <h2 id="titleblock"> Creamy Prawn Curry delicacy</h2>
+                </div>
+                <div class="thumimg">
+                    <img src="thumbnail/11.jpg">
+                </div>
+                <div class='hide-content'>
+                    <h2 id="innerName">Malai Prawn</h2>
+                    <br>
+                    <small>
+                        "creamy prawn"
+                        <span></span>
+                    </small>
+                </div>
+            </div>
+        </div>
+ 
+        <div class="thumb thumb12">
+            <div class="name">
+                <h2 id="headName">Methi Murg</h2>
+            </div>
+            <div class="inner-content">
+                <div class="title">
+                    <h2 id="titleblock"> Chicken Curry With Fenugreek</h2>
+                </div>
+                <div class="thumimg">
+                    <img src="thumbnail/12.jpg">
+                </div>
+                <div class='hide-content'>
+                    <h2 id="innerName">Methi Murg</h2>
+                    <br>
+                    <small>
+                        "Methi chicken"
+                        <span></span>
+                    </small>
+                </div>
+            </div>
+        </div>     
+             
+    
+    </div>
+    
+    <script>
+
+        var color = ["rgba(0,31,63,    0.8)",
+                     "rgba(0,116,217,  0.8)",
+                     "rgba(127,219,255,0.8)",
+                     "rgba(57,204,204, 0.8)",
+                     "rgba(61,153,112, 0.8)",
+                     "rgba(46,204,64,  0.8)",
+                     "rgba(1,255,112,  0.8)",
+                     "rgba(255,220,0,  0.8)",
+                     "rgba(255,133,27, 0.8)",
+                     "rgba(255,65,54,  0.8)",
+                     "rgba(133,20,75,  0.8)",
+                     "rgba(240,18,190, 0.8)"]
+                         
+
+
+
+        // document.styleSheets[0].insertRule('.thumb{color:red;}', document.styleSheets[0].length)
+        // document.styleSheets[0].cssRules[document.styleSheets[0].cssRules.length-1].cssText
+        // document.styleSheets[0].cssRules[document.styleSheets[0].cssRules.length].cssText
+        // document.styleSheets[0].insertRule('.thumb{color:red;}', document.styleSheets.length)
+        // document.styleSheets[0].insertRule('.thumb{color:red;}', document.styleSheets[0].cssRules.length)
+        // document.styleSheets[0].cssRules
+
+
+
+        var thumbnails = document.getElementsByClassName('thumb')
+        // var length = document.styleSheets[0].cssRules.length
+        var sheet = document.styleSheets[0]
+        for(let i=0; i<12; i++){
+            sheet.insertRule(`.thumb:nth-child(${i}):hover{background: ${color[i]}; color: white;}`,document.styleSheets[0].cssRules.length) 
+            // sheet.insertRule(`.thumb:nth-child(${i}):hover>.container{background: black; color: white;}`,document.styleSheets[0].cssRules.length) 
+        }
+
+        document.addEventListener('mousemove', function(){
+            for(let i=0; i<12; i++){
+                e = document.getElementsByClassName('thumb')[i]
+                if(e.parentElement.querySelector(':hover') == e){
+                    document.getElementsByClassName('container')[0].style.backgroundImage=`url('thumbnail/${i+1}.jpg')`
+                }else{
+                    console.log('why')
+                    // document.getElementsByClassName('container')[0].style.backgroundImage=`url('thumbnail/mainfood.jpg')`
+
+                }
+            }
+        })
+
+        if(window.innerWidth < 1300 && window.innerWidth > 900){
+            reportWindow()
+        }
+        else if(window.innerWidth > 1500){
+            reportWindow()
+        }   
+        function reportWindow(){
+            if(window.innerWidth < 1300 && window.innerWidth > 900){
+                for(let i=0; i<document.getElementsByClassName('thumb').length; i++){
+                    document.getElementsByClassName('thumb')[i].style.width = '50%'
+                }
+            }
+            else if(window.innerWidth > 1500){
+                for(let i=0; i<document.getElementsByClassName('thumb').length; i++){
+                    document.getElementsByClassName('thumb')[i].style.width = '25%'
+                }
+            }
+        }
+
+        window.onresize = reportWindow
+    </script>
+</body>
+</html>
